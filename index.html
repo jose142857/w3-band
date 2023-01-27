@@ -7,6 +7,7 @@
     <title>The Band</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/font/themify-icons.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css">
   </head>
   <body>
     <div id="main">
@@ -18,7 +19,7 @@
           <li><a href="#tour">Tour</a></li>
           <li><a href="#contact">Contact</a></li>
           <li>
-            <a href=""
+            <a href="#"
               >More
               <i class="nav-arrow-down ti-angle-down"></i>
             </a>
@@ -33,6 +34,9 @@
         <!-- begin search button -->
         <div class="search-button">
           <i class="search-icon ti-search"></i>
+        </div>
+        <div id="mobile-menu" class="mobile-menu-btn">
+          <i class="menu-icon ti-menu"></i>
         </div>
         <!-- end search button -->
       </div>
@@ -147,8 +151,8 @@
             <div class="row contact-part">
               <div class="col col-2 contact-info">
                 <p><i class="ti-location-pin"></i>Chicago, US</p>
-                <p><i class="ti-mobile"></i> Phone: +00 151515</p>
-                <p><i class="ti-email"></i> Email: mail@mail.com</p>
+                <p><i class="ti-mobile"></i> Phone: <a href="tel:+00 151515">+00 151515</a> </p>
+                <p><i class="ti-email"></i> Email: <a href="mailto:mail@mail.com">mail@mail.com</a> </p>
               </div>
               <div class="col col-2 contact-form">
                 <form action="">
@@ -260,6 +264,35 @@
       modalContainer.addEventListener('click',function(event){
         event.stopPropagation()
       })
+    </script>
+
+    <!-- processing mobile-menu-btn by Js -->
+    <script>
+      var header = document.getElementById('header');
+      var mobileMenu = document.getElementById('mobile-menu')
+      var headerHeight = header.clientHeight //46px
+      mobileMenu.onclick = function(){
+        var isClose = header.clientHeight === headerHeight;
+        if (isClose){
+          header.style.height = 'auto'
+        } else{
+          header.style.height = '46px'
+
+        }
+      }
+      <!-- hiding menu when click menu link -->
+      var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+      console.log(menuItems)
+      for (var i =0; i< menuItems.length; i++){
+        var menuItem = menuItems[i];
+        var isParentMenu = menuItem.nextElementSibling && menuItem.nextElementSibling.classList.contains('subnav');
+        menuItem.onclick = function(){
+          if(isParentMenu){
+            header.style.height = 'auto'
+          }
+        }
+      }
+
     </script>
   </body>
 </html>

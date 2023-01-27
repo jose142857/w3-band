@@ -81,6 +81,7 @@ html {
     left: 0;
     right: 0;
     z-index: 1;
+   
 }
 
 #nav {
@@ -131,19 +132,29 @@ html {
 #nav .nav-arrow-down {
     font-size: 12px;
 }
-
-#header .search-button {
+#header .mobile-menu-btn,
+#header .search-button{
     display: inline-block;
     float: right;
     width: 62px;
     text-align: center;
 }
+#header .mobile-menu-btn:hover {
+    background-color: #ccc;
+   
+}
+#header .mobile-menu-btn:hover .menu-icon{
+    color: #000; 
+}
+#header .mobile-menu-btn{
+    display: none;
+}
 
-#header .search-button:hover {
+#header .search-button:hover{
     background-color: #f44336;
     cursor: pointer;
 }
-
+#header .menu-icon, 
 #header .search-icon {
     color: #fff;
     font-size: 15px;
@@ -185,8 +196,11 @@ transform: translateX(-50%); */
 }
 .content-section {
     width: 800px;
+    max-width: 100%;
     padding: 64px 0;
     margin: auto;
+    padding-left: 15px;
+    padding-right: 16px;
 }
 
 #content .section-heading {
